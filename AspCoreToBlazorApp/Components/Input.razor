@@ -1,0 +1,13 @@
+﻿<div>
+    <label>@Label</label>
+    <input @attributes="InputAttributes" />
+</div>
+
+
+@code {
+    [Parameter]
+    public string? Label { set; get; }
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? InputAttributes { set; get; }
+}

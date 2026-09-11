@@ -1,0 +1,16 @@
+﻿<h3>@Title</h3>
+
+<ul>
+@foreach(var item in Items)
+{
+    <li>@item</li>    
+}
+</ul>
+
+@code {
+    [Parameter]
+    public string Title { set; get; }
+
+    [Parameter]
+    public List<string> Items { set; get; } = new();
+}

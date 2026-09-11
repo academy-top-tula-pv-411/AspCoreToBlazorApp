@@ -1,0 +1,28 @@
+﻿@using AspCoreToBlazorApp.Models;
+
+<h3>Hello @Name</h3>
+<h4>Current time: @GetTime()</h4>
+
+<UnorderList 
+    Title="Cities"
+    Items="@cities" />
+
+<h5>@ChildContent</h5>
+
+@code {
+
+    [Parameter]
+    [EditorRequired]
+    public string Name { set; get; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { set; get; }
+
+
+    Employee bobby = new() { Name = "Bobby", Age = 25 };
+
+    string GetTime()
+        => DateTime.Now.ToShortTimeString();
+
+    List<string> cities = new() { "Moscow", "Kazan", "Tula" };
+}

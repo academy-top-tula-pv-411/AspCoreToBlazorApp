@@ -1,0 +1,39 @@
+﻿@page "/"
+
+<link href="/css/styles.css" rel="stylesheet" type="text/css" />
+
+@using AspCoreToBlazorApp.Components
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Core To Blazor</title>
+        <base href="/" />
+    </head>
+    <body>
+        <h2>Core To Blazor</h2>
+
+        @* <Hello Name="Fanny">
+            <a href="https://ya.ru">Search in Yandex</a>
+        </Hello>
+        <Input Label="User Id" InputAttributes="@AttributesDict" /> *@
+
+        @* <Counter /> *@
+
+        <MouseEvent />
+
+
+        <script src="_framework/blazor.web.js"></script>
+    </body>
+</html>
+
+@code{
+    public Dictionary<string, object> AttributesDict { set; get; }
+            = new()
+            {
+                {"id", "userId"},
+                {"type", "number"},
+                {"name", "userId"}
+            };
+}
