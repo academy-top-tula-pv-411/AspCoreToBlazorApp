@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@rendermode RenderMode.InteractiveServer
+
+<div>
+    <label>@Label</label>
+    <input type="text" @bind-value="@text" />
+    <button type="button"
+            @onclick="@OnClick">
+        Add
+    </button>
+</div>
+
+@code {
+    string text = "";
+
+    [Parameter]
+    public string Label { set; get; }
+
+    [Parameter]
+    public EventCallback<string> OnClickHandler { set; get; }
+
+    async Task OnClick()
+    {
+        await OnClickHandler.InvokeAsync(text);
+        text = "";
+    }
+}

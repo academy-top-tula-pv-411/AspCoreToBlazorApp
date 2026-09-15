@@ -1,25 +1,26 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
 @rendermode RenderMode.InteractiveServer
 
-<h3>Counter</h3>
-
 <div>
-    <button onclick="@Dec">Minus</button>
-    <span>@Count</span>
-    <button onclick="@Inc">Plus</button>
+    <button @onclick="OnClickCallback">@Text</button>
 </div>
 
 @code {
     [Parameter]
-    public int? Count { set; get; } = 0;
+    public EventCallback OnClickCallback { set; get; }
 
-    void Inc(MouseEventArgs e)
-    {
-        if (e.CtrlKey)
-            Count += 10;
-        else
-            Count++;
-    }
+    [Parameter]
+    public string Text { set; get; }
 
-    void Dec() => Count--;
+    //public int? Count { set; get; } = 0;
+
+    // void Inc(MouseEventArgs e)
+    // {
+    //     if (e.CtrlKey)
+    //         Count += 10;
+    //     else
+    //         Count++;
+    // }
+
+    // void Dec() => Count--;
 }

@@ -1,0 +1,59 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@rendermode RenderMode.InteractiveServer
+
+@* <Counter OnClickCallback="@Dec" Text="Minus" />
+<p>@count</p>
+<Counter OnClickCallback="@Inc" Text="Plus" /> *@
+
+@* <MouseEvent HandlerAsync="@MoveHandlerAsync" />
+<div>
+    <p>ClientX: @clientX, ClientY: @clientY</p>
+    <p>OffsetX: @offsetX, OffsetY: @offsetY</p>
+    <p>PageX: @pageX, PageY: @pageY</p>
+    <p>ScreenX: @screenX, ScreenY: @screenY</p>
+</div> *@
+
+<h3>Employees:</h3>
+<InputText Label="Employee's Name:"
+           OnClickHandler="@AddEmployeeToList" />
+
+<ul>
+    @foreach(var e in employees)
+    {
+        <li>@e</li>
+    }
+</ul>
+
+
+@code {
+    int count = 0;
+
+    void Inc() => count++;
+    void Dec() => count--;
+
+    double clientX, clientY,
+                offsetX, offsetY,
+                pageX, pageY,
+                screenX, screenY;
+
+    async Task MoveHandlerAsync(MouseEventArgs e)
+    {
+        await Task.Delay(1000);
+
+        clientX = e.ClientX;
+        clientY = e.ClientY;
+        offsetX = e.OffsetX;
+        offsetY = e.OffsetY;
+        pageX = e.PageX;
+        pageY = e.PageY;
+        screenX = e.ScreenX;
+        screenY = e.ScreenY;
+    }
+
+    List<string> employees = new();
+
+    void AddEmployeeToList(string employee)
+    {
+        employees.Add(employee);
+    }
+}

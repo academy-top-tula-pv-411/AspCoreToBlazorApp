@@ -10,31 +10,10 @@
     }
 </style>
 
-<div id="canvas" onclick="@ClickHandlerAsync" />
-<div>
-    <p>ClientX: @clientX, ClientY: @clientY</p>
-    <p>OffsetX: @offsetX, OffsetY: @offsetY</p>
-    <p>PageX: @pageX, PageY: @pageY</p>
-    <p>ScreenX: @screenX, ScreenY: @screenY</p>
-</div>
+<div id="canvas" onmousemove="@HandlerAsync" />
+
 
 @code {
-    double clientX, clientY,
-                offsetX, offsetY,
-                pageX, pageY,
-                screenX, screenY;
-
-    async Task ClickHandlerAsync(MouseEventArgs e)
-    {
-        await Task.Delay(1000);
-
-        clientX = e.ClientX;
-        clientY = e.ClientY;
-        offsetX = e.OffsetX;
-        offsetY = e.OffsetY;
-        pageX = e.PageX;
-        pageY = e.PageY;
-        screenX = e.ScreenX;
-        screenY = e.ScreenY;
-    }
+    [Parameter]
+    public EventCallback<MouseEventArgs> HandlerAsync { set; get; }
 }
